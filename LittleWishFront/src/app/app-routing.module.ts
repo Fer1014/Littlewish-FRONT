@@ -9,6 +9,12 @@ import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuari
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
 import { TarjetaListarComponent } from './components/tarjeta/tarjeta-listar/tarjeta-listar.component';
+import { PagoService } from './services/pago.service';
+import { PagoComponent } from './components/pago/pago.component';
+import { CrearComponent } from './components/pago/crear/crear.component';
+import { ListarComponent } from './components/pago/listar/listar.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
 
 const routes: Routes = [
   {
@@ -30,6 +36,18 @@ const routes: Routes = [
       { path: 'nuevo', component: TarjetaCreaeditaComponent },
       { path: 'listar', component: TarjetaListarComponent },
       { path: 'edicion/:id', component: TarjetaCreaeditaComponent}
+    ]
+  },
+  {
+    path: 'pagos', component: PagoComponent, children: [
+      { path: 'nuevo', component: CrearComponent },
+      
+      
+    ]
+  },
+  {
+    path: 'proyectos', component: ProyectoComponent, children: [
+      { path: 'nuevo', component: CrearProyectoComponent },
     ]
   },
 ];

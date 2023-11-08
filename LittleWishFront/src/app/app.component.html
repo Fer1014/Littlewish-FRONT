@@ -3,6 +3,8 @@
   <button mat-button [matMenuTriggerFor]="menuUsuarios">Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuRoles">Roles</button>
   <button mat-button [matMenuTriggerFor]="menuTarjetas">Tarjetas</button>
+  <button mat-button [matMenuTriggerFor]="menuPago">Pago</button>
+  <button mat-button [matMenuTriggerFor]="menuProyecto">Proyecto</button>
 </mat-toolbar>
 
 <mat-menu #menuUsuarios="matMenu">
@@ -29,6 +31,25 @@
     Registrar</button>
 
   <button mat-menu-item routerLink="/tarjeta/listar">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+<mat-menu #menuPago="matMenu">
+  <button mat-menu-item routerLink="/pagos/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+
+  <button mat-menu-item routerLink="/pagos">
+    <mat-icon>dns</mat-icon>
+    Listar</button>
+</mat-menu>
+
+<mat-menu #menuProyecto="matMenu">
+  <button mat-menu-item routerLink="/proyectos/nuevo">
+    <mat-icon>dns</mat-icon>
+    Registrar</button>
+
+  <button mat-menu-item routerLink="/proyectos">
     <mat-icon>dns</mat-icon>
     Listar</button>
 </mat-menu>

@@ -30,6 +30,12 @@ import { TipousuarioCreaeditaComponent } from './components/tipo-usuario/tipousu
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaListarComponent } from './components/tarjeta/tarjeta-listar/tarjeta-listar.component';
 import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
+import { PagoComponent } from './components/pago/pago.component';
+import { ListarComponent } from './components/pago/listar/listar.component';
+import { CrearComponent } from './components/pago/crear/crear.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { ListarProyectoComponent } from './components/proyecto/listar-proyecto/listar-proyecto.component';
+import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
 
 
 
@@ -44,7 +50,13 @@ import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedit
     TipousuarioCreaeditaComponent,
     TarjetaComponent,
     TarjetaListarComponent,
-    TarjetaCreaeditaComponent
+    TarjetaCreaeditaComponent,
+    PagoComponent,
+    ListarComponent,
+    CrearComponent,
+    ProyectoComponent,
+    ListarProyectoComponent,
+    CrearProyectoComponent
   ],
   imports: [
     BrowserModule,
