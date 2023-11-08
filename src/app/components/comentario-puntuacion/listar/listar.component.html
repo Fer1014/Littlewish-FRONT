@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Little Wish</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="margin-left: auto;">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="toolbar-margin"></div>
+  
+
+  <div class="grid-container">
+    <div class="button-container">
+      <h1 class="mat-h1">Comentarios</h1>
+      <button class="add-button" (click)="navigateToComentarioPuntuacion()">Añadir</button>
+    </div>
+
+<div class = "grid-container">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Large</mat-card-subtitle>
+          <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        {{longText}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class = "grid-container">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Large</mat-card-subtitle>
+          <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        {{longText}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class = "grid-container">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Large</mat-card-subtitle>
+          <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        {{longText}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class = "grid-container">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Large</mat-card-subtitle>
+          <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        {{longText}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  </div>
+
+  <mat-paginator [length]="100"
+              [pageSize]="4"
+              aria-label="Select page">
+</mat-paginator>
+  
+</body>
+</html>
+
+

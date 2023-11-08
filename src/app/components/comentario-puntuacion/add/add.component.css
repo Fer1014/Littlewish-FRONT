@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Kiwi Maru", sans-serif;
+}
+
+mat-toolbar {
+  background-color: #292424;
+  font-family: "Kiwi Maru", sans-serif;
+  color: white;
+}
+
+.toolbar-margin {
+  margin-top: 20px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card {
+  width: 49%;
+  margin-right: 2%;
+  text-align: center;
+  color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px; /* Añade bordes redondeados a las tarjetas */
+}
+
+.comment-card {
+  width: 100%;
+  text-align: center;
+  color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px; /* Añade bordes redondeados a la tarjeta de comentario */
+}
+
+.small-card {
+  width: 49%;
+  margin-left: 2%;
+  text-align: center;
+  color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px; /* Añade bordes redondeados a la tarjeta de puntuación */
+}
+
+.card-header {
+  background-color: #D9D9D9;
+  font-family: "Kiwi Maru", sans-serif;
+  color: #292424;
+  padding: 10px;
+}
+
+.card-content {
+  margin-top: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-input-container {
+  margin-left: 0;
+}
+
+.mat-input-element {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #D9D9D9;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Coloca el botón al lado derecho */
+  margin-top: 20px;
+}
+
+.add-button {
+  background-color: #40BF80;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: "Kiwi Maru", sans-serif;
+  cursor: pointer;
+  margin-right: 2%; /* Añade el mismo margen derecho que la tarjeta de puntuación */
+}

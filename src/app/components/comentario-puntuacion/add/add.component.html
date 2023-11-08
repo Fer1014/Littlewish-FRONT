@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Little Wish</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="margin-left: auto;">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="toolbar-margin"></div>
+
+  <div class="card-container">
+    <mat-card class="comment-card">
+      <mat-card-title class="card-header">Comentario</mat-card-title>
+      <mat-card-content class="card-content">
+        <mat-form-field class="mat-input-container">
+          <mat-label>Escribe tu comentario</mat-label>
+          <textarea matInput placeholder="Escribe tu comentario aquí" formControlComment = "comentario"></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="small-card">
+      <mat-card-title class="card-header">Puntuación</mat-card-title>
+      <mat-card-content class="card-content">
+        <mat-form-field>
+          <mat-label>Ingresa una puntuación</mat-label>
+          <input matInput type="number" placeholder="Ingresa una puntuación">
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="button-container">
+    <button class="add-button" routerLink="/listar">aceptar</button>
+  </div>
+</body>
+</html>
