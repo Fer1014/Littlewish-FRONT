@@ -32,6 +32,30 @@ const routes: Routes = [
       { path: 'edicion/:id', component: TarjetaCreaeditaComponent}
     ]
   },
+  {
+    path: 'universidad',
+    component: UniversidadComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaUniversidadComponent },
+      { path: 'ediciones/:id', component: CreaeditaUniversidadComponent },
+    ],
+  },
+  {
+    path: 'carrera',
+    component: CarreraComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaCarreraComponent },
+      { path: 'ediciones/:id', component: CreaeditaCarreraComponent },
+    ],
+  }, 
+  {
+    path: 'formacionacademica',
+    component: FormacionacademicaComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaFormacionacademicaComponent },
+      { path: 'ediciones/:id', component: CreaeditaFormacionacademicaComponent },
+    ],
+  },
 ];
 
 @NgModule({

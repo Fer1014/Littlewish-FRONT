@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">
+  </head>
+<mat-toolbar class="toolbar">
+    <img src="assets/LWLogo.png" alt="Logo de mi aplicación" class="logo-img">
+    <span style="margin-left: 10px;"></span>
+    <Span>LITTLE<br>WISH</Span>
+    <span class="flex"></span>
+    <mat-icon>person</mat-icon>
+    <span class="flexentreicons"></span>
+    <mat-icon>menu</mat-icon>
+</mat-toolbar>
+  <body>
+    <div class="container-form" style="text-align: center">
+      <h2>Registro de carreras</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>ID_Carrera</mat-label>
+          <input matInput placeholder="Id" formControlName="ID_Carrera" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Carrera</mat-label>
+          <input
+            matInput
+            placeholder="Carrera"
+            formControlName="nameCarreras"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('nameCarreras')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button class="aceptar-button" color="primary">Aceptar</button>
+        <button mat-raised-button class="cancelar-button" color="warn" routerLink="/carrera">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>
