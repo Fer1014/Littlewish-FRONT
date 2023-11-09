@@ -21,6 +21,15 @@ import { PagoComponent } from './components/pago/pago.component';
 import { CrearComponent } from './components/pago/crear/crear.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
+import { CertificacionComponent } from './components/certificacion/certificacion.component';
+import { ListCertificacionComponent } from './components/certificacion/list-certificacion/list-certificacion.component';
+import { InsertEditCertificacionComponent } from './components/certificacion/insert-edit-certificacion/insert-edit-certificacion.component';
+import { ExperienciaLaboralComponent } from './components/experiencia-laboral/experiencia-laboral.component';
+import { InsertEditExperienciaLaboralComponent } from './components/experiencia-laboral/insert-edit-experiencia-laboral/insert-edit-experiencia-laboral.component';
+import { ListExperienciaLaboralComponent } from './components/experiencia-laboral/list-experiencia-laboral/list-experiencia-laboral.component';
+import { IdiomaComponent } from './components/idioma/idioma.component';
+import { InsertEditIdiomasComponent } from './components/idioma/insert-edit-idiomas/insert-edit-idiomas.component';
+import { ListIdiomasComponent } from './components/idioma/list-idiomas/list-idiomas.component';
 
 
 const routes: Routes = [
@@ -87,7 +96,29 @@ const routes: Routes = [
       { path: 'nuevo', component: CrearProyectoComponent },
     ]
   },
+  {
+    path: 'certificacion', component: CertificacionComponent, children: [
+      { path: 'nuevo', component: InsertEditCertificacionComponent },
+      { path: 'listar', component: ListCertificacionComponent },
+      { path: 'edicion/:id_Certificaciones', component: InsertEditCertificacionComponent}
+    ]
+  },
+  {
+    path: 'experiencia-laboral', component: ExperienciaLaboralComponent, children: [
+      { path: 'nuevo', component: InsertEditExperienciaLaboralComponent },
+      { path: 'listar', component: ListExperienciaLaboralComponent },
+      { path: 'edicion/:id_Experiencia_laboral', component: InsertEditExperienciaLaboralComponent}
+    ]
+  },
+  {
+    path: 'idiomas', component: IdiomaComponent, children: [
+      { path: 'nuevo', component: InsertEditIdiomasComponent },
+      { path: 'listar', component: ListIdiomasComponent },
+      { path: 'edicion/:id_Idiomas', component: InsertEditIdiomasComponent}
+    ]
+  }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

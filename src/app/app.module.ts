@@ -48,6 +48,15 @@ import { ListarProyectoComponent } from './components/proyecto/listar-proyecto/l
 import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { ListarComponent } from './components/pago/listar/listar.component';
+import { CertificacionComponent } from './components/certificacion/certificacion.component';
+import { IdiomaComponent } from './components/idioma/idioma.component';
+import { ExperienciaLaboralComponent } from './components/experiencia-laboral/experiencia-laboral.component';
+import { InsertEditCertificacionComponent } from './components/certificacion/insert-edit-certificacion/insert-edit-certificacion.component';
+import { ListCertificacionComponent } from './components/certificacion/list-certificacion/list-certificacion.component';
+import { InsertEditExperienciaLaboralComponent } from './components/experiencia-laboral/insert-edit-experiencia-laboral/insert-edit-experiencia-laboral.component';
+import { ListExperienciaLaboralComponent } from './components/experiencia-laboral/list-experiencia-laboral/list-experiencia-laboral.component';
+import { InsertEditIdiomasComponent } from './components/idioma/insert-edit-idiomas/insert-edit-idiomas.component';
+import { ListIdiomasComponent } from './components/idioma/list-idiomas/list-idiomas.component';
 
 
 
@@ -79,7 +88,17 @@ import { ListarComponent } from './components/pago/listar/listar.component';
     CrearComponent,
     ProyectoComponent,
     ListarProyectoComponent,
-    CrearProyectoComponent
+    CrearProyectoComponent,
+    CertificacionComponent,
+    IdiomaComponent,
+    ExperienciaLaboralComponent,
+    InsertEditCertificacionComponent,
+    ListCertificacionComponent,
+    InsertEditExperienciaLaboralComponent,
+    ListExperienciaLaboralComponent,
+    InsertEditIdiomasComponent,
+    ListIdiomasComponent,
+
 
   ],
   imports: [
