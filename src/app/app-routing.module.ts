@@ -9,6 +9,19 @@ import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuari
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
 import { TarjetaListarComponent } from './components/tarjeta/tarjeta-listar/tarjeta-listar.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { UniversidadComponent } from './components/universidad/universidad.component';
+import { CreaeditaUniversidadComponent } from './components/universidad/creaedita-universidad/creaedita-universidad.component';
+import { CarreraComponent } from './components/carrera/carrera.component';
+import { CreaeditaCarreraComponent } from './components/carrera/creaedita-carrera/creaedita-carrera.component';
+import { FormacionacademicaComponent } from './components/formacionacademica/formacionacademica.component';
+import { CreaeditaFormacionacademicaComponent } from './components/formacionacademica/creaedita-formacionacademica/creaedita-formacionacademica.component';
+import { PagoComponent } from './components/pago/pago.component';
+import { CrearComponent } from './components/pago/crear/crear.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
+
 
 const routes: Routes = [
   {
@@ -33,6 +46,12 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'menu', component: MenuComponent
+  },
+  {
+    path: '', component: LoginComponent
+  },
+  {
     path: 'universidad',
     component: UniversidadComponent,
     children: [
@@ -55,6 +74,18 @@ const routes: Routes = [
       { path: 'nuevo', component: CreaeditaFormacionacademicaComponent },
       { path: 'ediciones/:id', component: CreaeditaFormacionacademicaComponent },
     ],
+  },
+  {
+    path: 'pagos', component: PagoComponent, children: [
+      { path: 'nuevo', component: CrearComponent },
+      
+      
+    ]
+  },
+  {
+    path: 'proyectos', component: ProyectoComponent, children: [
+      { path: 'nuevo', component: CrearProyectoComponent },
+    ]
   },
 ];
 

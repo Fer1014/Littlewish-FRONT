@@ -30,6 +30,24 @@ import { TipousuarioCreaeditaComponent } from './components/tipo-usuario/tipousu
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaListarComponent } from './components/tarjeta/tarjeta-listar/tarjeta-listar.component';
 import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { UniversidadComponent } from './components/universidad/universidad.component';
+import { CreaeditaUniversidadComponent } from './components/universidad/creaedita-universidad/creaedita-universidad.component';
+import { ListarUniversidadComponent } from './components/universidad/listar-universidad/listar-universidad.component';
+import { CarreraComponent } from './components/carrera/carrera.component';
+import { CreaeditaCarreraComponent } from './components/carrera/creaedita-carrera/creaedita-carrera.component';
+import { ListarCarreraComponent } from './components/carrera/listar-carrera/listar-carrera.component';
+import { FormacionacademicaComponent } from './components/formacionacademica/formacionacademica.component';
+import { CreaeditaFormacionacademicaComponent } from './components/formacionacademica/creaedita-formacionacademica/creaedita-formacionacademica.component';
+import { ListarFormacionacademicaComponent } from './components/formacionacademica/listar-formacionacademica/listar-formacionacademica.component';
+import { CrearComponent } from './components/pago/crear/crear.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { ListarProyectoComponent } from './components/proyecto/listar-proyecto/listar-proyecto.component';
+import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
+import { PagoComponent } from './components/pago/pago.component';
+import { ListarComponent } from './components/pago/listar/listar.component';
 
 
 
@@ -44,7 +62,25 @@ import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedit
     TipousuarioCreaeditaComponent,
     TarjetaComponent,
     TarjetaListarComponent,
-    TarjetaCreaeditaComponent
+    TarjetaCreaeditaComponent,
+    MenuComponent,
+    LoginComponent,
+    UniversidadComponent,
+    CreaeditaUniversidadComponent,
+    CreaeditaCarreraComponent,
+    CarreraComponent,
+    ListarUniversidadComponent,
+    ListarCarreraComponent,
+    FormacionacademicaComponent,
+    CreaeditaFormacionacademicaComponent,
+    ListarFormacionacademicaComponent,
+    PagoComponent,
+    ListarComponent,
+    CrearComponent,
+    ProyectoComponent,
+    ListarProyectoComponent,
+    CrearProyectoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,6 +104,7 @@ import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedit
     HttpClientModule,
     MatFormFieldModule,
     MatDividerModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
