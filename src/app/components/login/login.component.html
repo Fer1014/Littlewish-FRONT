@@ -18,38 +18,34 @@
                 <h2>¡BIENVENIDO!</h2>
                 <p>Encantado de tenerte por aqui otra vez, por favor ingresa tus credenciales para iniciar sesion o de lo contrario
                     da click en "Create Account" para registrar una cuenta nueva.</p>
-            </div>     
+            </div>
         </div>
         <div class="form-info">
             <div class="form-info-child">
-                <h1 style="font-family: 'Kiwi Maru', serif;">Login your Account</h1>
-                <form>
+                <div class="container" style="text-align: center">
+                    <h2>Inicie sesión</h2>
                     <mat-form-field class="example-full-width">
                         <mat-label>Usuario</mat-label>
-                        <input matInput placeholder="Usuario" formControlName="username" maxlength="15" />
-                        <mat-error *ngIf="obtenerControlCampo('username')?.errors?.['required']">
-                            Complete el campo
-                        </mat-error>
+                        <input matInput placeholder="Username" [(ngModel)]="username" />
                     </mat-form-field>
                     <br />
                     <mat-form-field class="example-full-width">
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput placeholder="Password" formControlName="password" type="password"
-                            minlength="5" />
-                        <mat-hint>5 caracteres como mínimo</mat-hint>
-                        <mat-error *ngIf="obtenerControlCampo('password')?.errors?.['required']">
-                            Complete el campo
-                        </mat-error>
+                        <mat-label>Password</mat-label>
+                        <input
+                            type="password"
+                            matInput
+                            placeholder="Password"
+                            [(ngModel)]="password"
+                        />
                     </mat-form-field>
-                    <br>
-                    <button mat-button routerLink="" class="custom-button">Iniciar Sesion</button>
-                    <br>
-                    <h2><a href="/usuarios/nuevo">Create Account</a></h2>
-                    <h2><a href="">Forgot Password?</a></h2>
-                </form>
-
+                    <br />
+                    <button mat-raised-button (click)="login()" class="custom-button" >Ingresar</button>
+                </div>
+                <h2><a href="/usuarios/nuevo">Create Account</a></h2>
+                <h2><a href="">Forgot Password?</a></h2>
             </div>
         </div>
+
     </div>
 </body>
 
