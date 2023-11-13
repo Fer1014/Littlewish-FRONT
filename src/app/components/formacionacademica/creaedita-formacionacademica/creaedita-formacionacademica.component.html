@@ -34,9 +34,9 @@
           <mat-select formControlName="university">
             <mat-option
               *ngFor="let u of listaUniversidades"
-              [value]="u.ID_Universidad"
+              [value]="u.idUniversidad"
             >
-              {{ u.ID_Universidad }}
+              {{ u.nameUniversidades }}
             </mat-option>
           </mat-select>
           <mat-error
@@ -51,9 +51,9 @@
             <mat-select formControlName="career">
               <mat-option
                 *ngFor="let c of listaCarreras"
-                [value]="c.ID_Carrera"
+                [value]="c.idCarrera"
               >
-                {{ c.ID_Carrera }}
+                {{ c.nameCarreras }}
               </mat-option>
             </mat-select>
             <mat-error
