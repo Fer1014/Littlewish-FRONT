@@ -7,7 +7,7 @@ import { FormacionacademicaService } from 'src/app/services/formacionacademica.s
 @Component({
   selector: 'app-listar-formacionacademica',
   templateUrl: './listar-formacionacademica.component.html',
-  styleUrls: ['./listar-formacionacademica.component.css']
+  styleUrls: ['./listar-formacionacademica.component.css'],
 })
 export class ListarFormacionacademicaComponent implements OnInit {
   dataSource: MatTableDataSource<FormacionAcademica> = new MatTableDataSource();

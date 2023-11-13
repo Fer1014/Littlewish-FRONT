@@ -42,9 +42,9 @@ export class CreaeditaFormacionacademicaComponent implements OnInit {
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.academica.Nombre_Secundaria = this.form.value.Nombre_Secundaria;
-      this.academica.ID_Universidad.ID_Universidad = this.form.value.ID_Universidad;
-      this.academica.ID_Carrera.ID_Carrera = this.form.value.ID_Carrera;
+      this.academica.nombreSecundaria = this.form.value.nombre;
+      this.academica.universidades.idUniversidad = this.form.value.university;
+      this.academica.carreras.idCarrera = this.form.value.career;
       this.faS.insert(this.academica).subscribe((data) => {
         this.faS.list().subscribe((data) => {
           this.faS.setList(data);
@@ -52,7 +52,7 @@ export class CreaeditaFormacionacademicaComponent implements OnInit {
       });
       this.router.navigate(['formacionacademica']);
     } else {
-      this.mensaje = 'Completo los campos!!';
+      this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
