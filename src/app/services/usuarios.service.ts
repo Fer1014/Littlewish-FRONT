@@ -48,6 +48,9 @@ export class UsuariosService {
       .set('Content-Type', 'application/json'),
     });
   }
+
+
+
   update(u: Usuarios) {
     let token = sessionStorage.getItem('token');
 
@@ -57,6 +60,8 @@ export class UsuariosService {
       .set('Content-Type', 'application/json'),
     });
   }
+
+
   delete(id: number) {
     let token = sessionStorage.getItem('token');
 

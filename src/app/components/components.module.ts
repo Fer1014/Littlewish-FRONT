@@ -45,9 +45,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
-
-
+import { ComentarioPuntuacionComponent } from './comentario-puntuacion/comentario-puntuacion.component';
+import { ListarComentarioComponent } from './comentario-puntuacion/listar/listar.component';
+import { AddComentarioComponent } from './comentario-puntuacion/add/add.component';
+import {MatTabsModule} from '@angular/material/tabs'
 
 @NgModule({
   declarations: [
@@ -76,6 +77,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ProyectoComponent,
     ListarProyectoComponent,
     CrearProyectoComponent,
+    ComentarioPuntuacionComponent,
+    ListarComentarioComponent,
+    AddComentarioComponent,
+    
 
   ],
   imports: [
@@ -100,6 +105,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatFormFieldModule,
     MatDividerModule,
     MatSidenavModule,
+    MatTabsModule
+    
   ]
 })
 export class ComponentsModule { }
