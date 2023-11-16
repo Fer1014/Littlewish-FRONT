@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuarios } from 'src/app/models/usuarios';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios-listar',
@@ -44,5 +45,8 @@ export class UsuariosListarComponent {
     });
   }
   
+  filter(en: any) {
+    this.dataSource.filter = en.target.value.trim();
+  }
 
 }

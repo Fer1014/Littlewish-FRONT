@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Usuarios } from '../models/usuarios';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 const base_url = environment.base;
 @Injectable({
@@ -25,7 +25,7 @@ export class UsuariosService {
   insert(uni: Usuarios) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, uni,{
+    return this.http.post(this.url, uni, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
@@ -44,19 +44,21 @@ export class UsuariosService {
 
     return this.http.get<Usuarios>(`${this.url}/${id}`, {
       headers: new HttpHeaders()
-      .set('Authorization', `Bearer ${token}`)
-      .set('Content-Type', 'application/json'),
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
     });
   }
+
   update(u: Usuarios) {
     let token = sessionStorage.getItem('token');
 
     return this.http.put(this.url, u, {
       headers: new HttpHeaders()
-      .set('Authorization', `Bearer ${token}`)
-      .set('Content-Type', 'application/json'),
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
     });
   }
+
   delete(id: number) {
     let token = sessionStorage.getItem('token');
 
@@ -65,5 +67,18 @@ export class UsuariosService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
+  }
+
+  buscar(fecha: string): Observable<Usuarios[]> {
+    let token = sessionStorage.getItem('token');
+    return this.http.post<Usuarios[]>(
+      `${this.url}/buscar`,
+      { fecha: fecha },
+      {
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      }
+    );
   }
 }

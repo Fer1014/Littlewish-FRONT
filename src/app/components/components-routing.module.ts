@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuariosCreaeditaComponent } from './usuarios/usuarios-creaedita/usuarios-creaedita.component';
@@ -9,7 +9,6 @@ import { TipousuarioListarComponent } from './tipo-usuario/tipousuario-listar/ti
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { TarjetaCreaeditaComponent } from './tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
 import { TarjetaListarComponent } from './tarjeta/tarjeta-listar/tarjeta-listar.component';
-import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { UniversidadComponent } from './universidad/universidad.component';
 import { CreaeditaUniversidadComponent } from './universidad/creaedita-universidad/creaedita-universidad.component';
@@ -21,73 +20,99 @@ import { PagoComponent } from './pago/pago.component';
 import { CrearComponent } from './pago/crear/crear.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto.component';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { EmpresarioComponent } from './empresario/empresario.component';
+import { DesarrolladorComponent } from './desarrollador/desarrollador.component';
+import { GuardService } from '../services/guard.service';
+import { ProfileAdministradorComponent } from './administrador/profile-administrador/profile-administrador.component';
+import { ProfileEmpresarioComponent } from './empresario/profile-empresario/profile-empresario.component';
+import { ProfileDesarrolladorComponent } from './desarrollador/profile-desarrollador/profile-desarrollador.component';
 
 
 const routes: Routes = [
   {
-    path: 'usuarios', component: UsuariosComponent, children: [
-      { path: 'nuevo', component: UsuariosCreaeditaComponent },
-      { path: 'listar', component: UsuariosListarComponent },
-      { path: 'edicion/:id', component: UsuariosCreaeditaComponent}
-    ]
-  },
-  {
-    path: 'tipousuario', component: TipoUsuarioComponent, children: [
-      { path: 'nuevo', component: TipousuarioCreaeditaComponent },
-      { path: 'listar', component: TipousuarioListarComponent },
-      { path: 'edicion/:id', component: TipousuarioCreaeditaComponent}
-    ]
-  },
-  {
-    path: 'tarjeta', component: TarjetaComponent, children: [
-      { path: 'nuevo', component: TarjetaCreaeditaComponent },
-      { path: 'listar', component: TarjetaListarComponent },
-      { path: 'edicion/:id', component: TarjetaCreaeditaComponent}
-    ]
-  },
-  {
-    path: 'menu', component: MenuComponent
-  },
-  {
-    path: '', component: LoginComponent
-  },
-  {
-    path: 'universidad',
-    component: UniversidadComponent,
+    canActivate: [GuardService],
+    path:'administrador/:id',
+    component: AdministradorComponent,
     children: [
-      { path: 'nuevo', component: CreaeditaUniversidadComponent },
-      { path: 'ediciones/:id', component: CreaeditaUniversidadComponent },
-    ],
-  },
-  {
-    path: 'carrera',
-    component: CarreraComponent,
-    children: [
-      { path: 'nuevo', component: CreaeditaCarreraComponent },
-      { path: 'ediciones/:id', component: CreaeditaCarreraComponent },
-    ],
-  }, 
-  {
-    path: 'formacionacademica',
-    component: FormacionacademicaComponent,
-    children: [
-      { path: 'nuevo', component: CreaeditaFormacionacademicaComponent },
-      { path: 'ediciones/:id', component: CreaeditaFormacionacademicaComponent },
-    ],
-  },
-  {
-    path: 'pagos', component: PagoComponent, children: [
-      { path: 'nuevo', component: CrearComponent },
-      
-      
+      {
+        path:'profile',
+        component: ProfileAdministradorComponent,
+      },
+      {
+        path: 'tipousuario', component: TipoUsuarioComponent, children: [
+          { path: 'nuevo', component: TipousuarioCreaeditaComponent },
+          { path: 'listar', component: TipousuarioListarComponent },
+          { path: 'ediciones/:id', component: TipousuarioCreaeditaComponent}
+        ]
+      },
+      {
+        path:'tarjeta', component:TarjetaComponent, children: [
+          { path:'listar', component: TarjetaListarComponent }
+        ]
+      }
     ]
   },
   {
-    path: 'proyectos', component: ProyectoComponent, children: [
-      { path: 'nuevo', component: CrearProyectoComponent },
-    ]
-  },
 
+    canActivate: [GuardService],
+    path:'desarrollador/:id',
+    component: DesarrolladorComponent,
+    children: [
+      {
+        path: 'profile',
+        component: ProfileDesarrolladorComponent,
+
+      },
+      {
+        path: 'universidad',
+        component: UniversidadComponent,
+        children: [
+          { path: 'nuevo', component: CreaeditaUniversidadComponent },
+          { path: 'ediciones/:id', component: CreaeditaUniversidadComponent },
+        ],
+      },
+      {
+        path: 'carrera',
+        component: CarreraComponent,
+        children: [
+          { path: 'nuevo', component: CreaeditaCarreraComponent },
+          { path: 'ediciones/:id', component: CreaeditaCarreraComponent },
+        ],
+      }, 
+      {
+        path: 'formacionacademica',
+        component: FormacionacademicaComponent,
+        children: [
+          { path: 'nuevo', component: CreaeditaFormacionacademicaComponent },
+          { path: 'ediciones/:id', component: CreaeditaFormacionacademicaComponent },
+        ],
+      },
+
+    ]
+  },
+  {
+
+    canActivate: [GuardService],
+    path:'empresario/:id',
+    component: EmpresarioComponent,
+    children: [
+      {
+        path: 'profile',
+        component: ProfileEmpresarioComponent,
+      },
+      {
+        path: 'pagos', component: PagoComponent, children: [
+          { path: 'nuevo', component: CrearComponent },
+        ]
+      },
+      {
+        path: 'proyectos', component: ProyectoComponent, children: [
+          { path: 'nuevo', component: CrearProyectoComponent },
+        ]
+      },
+    ]
+  },  
 ];
 
 @NgModule({
