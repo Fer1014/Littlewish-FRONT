@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { Proyecto } from 'src/app/models/proyecto';
+import { Proyectos } from 'src/app/models/proyecto';
+
 import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
 })
 export class CrearProyectoComponent implements OnInit{
   form: FormGroup = new FormGroup({});
-  proyecto: Proyecto = new Proyecto();
+  proyecto: Proyectos = new Proyectos();
   mensaje: string = '';
   
   MaxFecha: Date = moment().add(100, 'days').toDate();

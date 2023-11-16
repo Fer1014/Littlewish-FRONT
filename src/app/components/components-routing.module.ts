@@ -24,6 +24,7 @@ import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto
 
 
 const routes: Routes = [
+  
   {
     path: 'usuarios', component: UsuariosComponent, children: [
       { path: 'nuevo', component: UsuariosCreaeditaComponent },
