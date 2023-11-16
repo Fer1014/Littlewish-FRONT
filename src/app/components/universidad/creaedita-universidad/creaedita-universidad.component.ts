@@ -34,18 +34,18 @@ export class CreaeditaUniversidadComponent implements OnInit {
       this.init();
     });
     this.form = this.formBuilder.group({
-      ID_Universidad: [''],
+      idUniversidad: [''],
       nameUniversidades: ['', Validators.required],
-      FechaIngreso: ['', Validators.required],
-      FechaEgreso: ['', [Validators.required]],
+      fechaIngreso: ['', Validators.required],
+      fechaEgreso: ['', [Validators.required]],
     });
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.universidad.ID_Universidad = this.form.value.ID_Universidad;
+      this.universidad.idUniversidad = this.form.value.idUniversidad;
       this.universidad.nameUniversidades = this.form.value.nameUniversidades;
-      this.universidad.FechaIngreso = this.form.value.FechaIngreso;
-      this.universidad.FechaEgreso = this.form.value.FechaEgreso;
+      this.universidad.fechaIngreso = this.form.value.fechaIngreso;
+      this.universidad.fechaEgreso = this.form.value.fechaEgreso;
       if (this.edicion) {
         this.uS.update(this.universidad).subscribe(() => {
           this.uS.list().subscribe((data) => {
@@ -75,10 +75,10 @@ export class CreaeditaUniversidadComponent implements OnInit {
     if (this.edicion) {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
-          ID_Universidad: new FormControl(data.ID_Universidad),
+          idUniversidad: new FormControl(data.idUniversidad),
           nameUniversidades: new FormControl(data.nameUniversidades),
-          FechaIngreso: new FormControl(data.FechaIngreso),
-          FechaEgreso: new FormControl(data.FechaEgreso),
+          FechaIngreso: new FormControl(data.fechaIngreso),
+          FechaEgreso: new FormControl(data.fechaEgreso),
         });
       });
     }
