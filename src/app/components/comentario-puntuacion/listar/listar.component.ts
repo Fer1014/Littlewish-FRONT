@@ -19,6 +19,7 @@ import { MatTable } from '@angular/material/table';
 export class ListarComentarioComponent implements OnInit{
 
   comentarios: Comentario[] = [];
+  usuarioReceptor: string | undefined;
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -26,10 +27,12 @@ export class ListarComentarioComponent implements OnInit{
 
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
-    //this.cS.listbyUser(1).subscribe((data) =>{
+    //this.cS.listbyUser(Number(sessionStorage.getItem("idUsuarioComentario")?.toString())).subscribe((data) =>{
     
       this.comentarios = data;
       this.comentarios = this.comentarios;
+      this.usuarioReceptor = sessionStorage.getItem("idUsuarioComentario")?.toString();
+      console.log("idUsuarioReceptor: " + this.usuarioReceptor)
 
     });
     this.cS.getList().subscribe((data) => {

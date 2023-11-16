@@ -51,6 +51,8 @@ aceptar(): void {
 
     this.comentario.users.id = Number(sessionStorage.getItem("idUsuario"));
 
+    this.comentario.usersR.id = Number(sessionStorage.getItem("idUsuarioComentario"));
+
     console.log('Comentario:', this.comentario);
     this.cS.insert(this.comentario).subscribe((data) => {
       console.log('Respuesta del servicio:', data);

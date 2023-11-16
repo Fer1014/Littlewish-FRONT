@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Usuarios } from '../models/usuarios';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class UsuariosService {
 
   private url = `${base_url}/users`;
   private listaCambio = new Subject<Usuarios[]>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   list() {
     let token = sessionStorage.getItem('token');
 
@@ -71,4 +72,11 @@ export class UsuariosService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+  comentario(id: number) {
+    let token = sessionStorage.getItem('token');
+    sessionStorage.setItem("idUsuarioComentario", id.toString());
+    this.router.navigate(['components/comentarios/listar']);
+  }
+
 }
