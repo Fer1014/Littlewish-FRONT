@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+</head>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Little Wish</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="margin-left: auto;">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="toolbar-margin"></div>
+<body>
+  <div class="card-container">
+    <div class="form-info-child">
+        <h1>Registro de nuevo Comentario</h1>
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+            <div class="inputs1">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Comentario</mat-label>
+                    <input matInput placeholder="comentario" formControlName="comentario"/>
+                    <mat-error *ngIf="obtenerControlCampo('comentario')?.errors?.['required']">
+                        Complete el campo!
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <div class="button-container">
+                  <button mat-button class="add-button">Registrar</button>
+              </div>
+              </div>
+              <p>{{ mensaje }}</p>
+          </form>
+        </div>
+      </div>
+
+
+</body>
+</html>

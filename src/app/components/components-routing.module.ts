@@ -20,6 +20,7 @@ import { PagoComponent } from './pago/pago.component';
 import { CrearComponent } from './pago/crear/crear.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto.component';
+
 import { AdministradorComponent } from './administrador/administrador.component';
 import { EmpresarioComponent } from './empresario/empresario.component';
 import { DesarrolladorComponent } from './desarrollador/desarrollador.component';
@@ -28,6 +29,12 @@ import { ProfileEmpresarioComponent } from './empresario/profile-empresario/prof
 import { ProfileDesarrolladorComponent } from './desarrollador/profile-desarrollador/profile-desarrollador.component';
 import { DashboardComponent } from './administrador/dashboard/dashboard.component';
 import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
+
+import { ComentarioPuntuacionComponent } from './comentario-puntuacion/comentario-puntuacion.component';
+import { ListarComentarioComponent } from './comentario-puntuacion/listar/listar.component';
+import { AddComentarioComponent } from './comentario-puntuacion/add/add.component';
+
+
 
 const routes: Routes = [
   {
@@ -115,6 +122,18 @@ const routes: Routes = [
     ]
   },
   {
+
+    path: 'proyectos', component: ProyectoComponent, children: [
+      { path: 'nuevo', component: CrearProyectoComponent },
+    ]
+  },
+  {
+    path: 'comentarios', component: ComentarioPuntuacionComponent, children: [
+      { path: 'listar', component: ListarComentarioComponent },
+      { path: 'add', component: AddComentarioComponent },
+    ]
+  },
+
 
     canActivate: [GuardService],
     path:'empresario/:id',

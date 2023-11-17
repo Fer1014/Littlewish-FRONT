@@ -82,6 +82,7 @@ export class UsuariosCreaeditaComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.uS.listId(this.id).subscribe((data) => {
+        console.log("dataUSSS:" + data)
         this.form = new FormGroup({
           id: new FormControl(data.id),
           username: new FormControl(data.username),

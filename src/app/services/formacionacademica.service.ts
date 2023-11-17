@@ -8,15 +8,15 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class FormacionacademicaService {
-  private url = `${base_url}/formacion_academica`;
+  private url = `${base_url}/formacionacademica`;
   private listaCambio = new Subject<FormacionAcademica[]>();
   constructor(private http: HttpClient) {}
   list() {
     return this.http.get<FormacionAcademica[]>(this.url);
   }
 
-  insert(cou: FormacionAcademica) {
-    return this.http.post(this.url, cou);
+  insert(fa: FormacionAcademica) {
+    return this.http.post(this.url, fa);
   }
 
   setList(listaNueva: FormacionAcademica[]) {

@@ -44,6 +44,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { DesarrolladorComponent } from './desarrollador/desarrollador.component';
@@ -65,6 +66,12 @@ import { HomeComponent } from './home/home.component';
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
+
+=======
+import { ComentarioPuntuacionComponent } from './comentario-puntuacion/comentario-puntuacion.component';
+import { ListarComentarioComponent } from './comentario-puntuacion/listar/listar.component';
+import { AddComentarioComponent } from './comentario-puntuacion/add/add.component';
+import {MatTabsModule} from '@angular/material/tabs'
 
 
 @NgModule({
@@ -93,6 +100,7 @@ export function HttpLoaderFactory(http: HttpClient){
     ProyectoComponent,
     ListarProyectoComponent,
     CrearProyectoComponent,
+
     DesarrolladorComponent,
     EmpresarioComponent,
     AdministradorComponent,
@@ -100,6 +108,13 @@ export function HttpLoaderFactory(http: HttpClient){
     ProfileEmpresarioComponent,
     DashboardComponent,
     HomeComponent,
+
+    ComentarioPuntuacionComponent,
+    ListarComentarioComponent,
+    AddComentarioComponent,
+    
+
+
   ],
   imports: [
     CommonModule,
@@ -123,6 +138,7 @@ export function HttpLoaderFactory(http: HttpClient){
     MatFormFieldModule,
     MatDividerModule,
     MatSidenavModule,
+
     TranslateModule,
     MatGridListModule,
 
@@ -133,6 +149,10 @@ export function HttpLoaderFactory(http: HttpClient){
         deps: [HttpClient]
       }
     })
+
+    MatTabsModule
+    
+
   ]
 })
 export class ComponentsModule { }

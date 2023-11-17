@@ -25,7 +25,8 @@ export class UsuariosListarComponent {
     'telefono',
     'empresa',
     'estado',
-    'actualizar'
+    'actualizar',
+    'comentario'
   ];
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
@@ -43,6 +44,10 @@ export class UsuariosListarComponent {
     this.uS.delete(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter((element) => element.id !== id);
     });
+  }
+
+  comentario(id: number) {
+    this.uS.comentario(id);
   }
   
   filter(en: any) {

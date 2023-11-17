@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Carrera } from 'src/app/models/carrera';
 import { FormacionAcademica } from 'src/app/models/formacionacademica';
 import { Universidad } from 'src/app/models/universidad';
@@ -17,6 +17,8 @@ export class CreaeditaFormacionacademicaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   academica: FormacionAcademica = new FormacionAcademica();
   mensaje: string = '';
+  id: number = 0;
+  edicion: boolean = false;
   listaUniversidades: Universidad[] = [];
   listaCarreras: Carrera[] = [];
   constructor(
@@ -24,11 +26,18 @@ export class CreaeditaFormacionacademicaComponent implements OnInit {
     private uS: UniversidadService,
     private cS: CarreraService,
     private faS: FormacionacademicaService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
     this.form = this.formBuilder.group({
+      idFormacionAcademica: [''],
       nombre: ['', Validators.required],
       university: ['', Validators.required],
       career: ['', Validators.required],
@@ -42,17 +51,26 @@ export class CreaeditaFormacionacademicaComponent implements OnInit {
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.academica.Nombre_Secundaria = this.form.value.Nombre_Secundaria;
-      this.academica.ID_Universidad.ID_Universidad = this.form.value.ID_Universidad;
-      this.academica.ID_Carrera.ID_Carrera = this.form.value.ID_Carrera;
-      this.faS.insert(this.academica).subscribe((data) => {
-        this.faS.list().subscribe((data) => {
-          this.faS.setList(data);
+      this.academica.idFormacionAcademica = this.form.value.idFormacionAcademica;
+      this.academica.nombreSecundaria = this.form.value.nombre;
+      this.academica.universidades.idUniversidad = this.form.value.university;
+      this.academica.carreras.idCarrera = this.form.value.career;
+      if (this.edicion) {
+        this.faS.update(this.academica).subscribe(() => {
+          this.faS.list().subscribe((data) => {
+            this.faS.setList(data);
+          });
         });
-      });
-      this.router.navigate(['formacionacademica']);
+      } else {
+        this.faS.insert(this.academica).subscribe((data) => {
+          this.faS.list().subscribe((data) => {
+            this.faS.setList(data);
+          });
+        });
+      }
+      this.router.navigate(['curriculum/nuevo']);
     } else {
-      this.mensaje = 'Completo los campos!!';
+      this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
@@ -61,5 +79,17 @@ export class CreaeditaFormacionacademicaComponent implements OnInit {
       throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
     }
     return control;
+  }
+  init() {
+    if (this.edicion) {
+      this.faS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          idFormacionAcademica: new FormControl(data.idFormacionAcademica),
+          nombre: new FormControl(data.nombreSecundaria),
+          university: new FormControl(data.universidades),
+          career: new FormControl(data.carreras),
+        });
+      });
+    }
   }
 }

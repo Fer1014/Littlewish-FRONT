@@ -1,4 +1,10 @@
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Carrera } from './../../../models/carrera';
 import { Component, OnInit } from '@angular/core';
 import { CarreraService } from 'src/app/services/carrera.service';
@@ -7,7 +13,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-creaedita-carrera',
   templateUrl: './creaedita-carrera.component.html',
-  styleUrls: ['./creaedita-carrera.component.css']
+  styleUrls: ['./creaedita-carrera.component.css'],
 })
 export class CreaeditaCarreraComponent implements OnInit {
   form: FormGroup = new FormGroup({});
@@ -28,13 +34,13 @@ export class CreaeditaCarreraComponent implements OnInit {
       this.init();
     });
     this.form = this.formBuilder.group({
-      ID_Carrera: [''],
+      idCarrera: [''],
       nameCarreras: ['', Validators.required],
     });
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.carrera.ID_Carrera = this.form.value.ID_Carrera;
+      this.carrera.idCarrera = this.form.value.idCarrera;
       this.carrera.nameCarreras = this.form.value.nameCarreras;
       if (this.edicion) {
         this.cS.update(this.carrera).subscribe(() => {
@@ -49,7 +55,7 @@ export class CreaeditaCarreraComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['carrera']);
+      this.router.navigate(['formacionacademica/nuevo']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -64,15 +70,12 @@ export class CreaeditaCarreraComponent implements OnInit {
   }
   init() {
     if (this.edicion) {
-      
       this.cS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
-          ID_Carrera: new FormControl(data.ID_Carrera),
+          idCarrera: new FormControl(data.idCarrera),
           nameCarreras: new FormControl(data.nameCarreras),
-          
         });
       });
-      
     }
   }
 }

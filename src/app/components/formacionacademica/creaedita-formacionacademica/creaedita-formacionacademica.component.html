@@ -9,18 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <mat-toolbar class="toolbar">
-      <img src="assets/LWLogo.png" alt="Logo de mi aplicación" class="logo-img">
-      <span style="margin-left: 10px;"></span>
-      <Span>LITTLE<br>WISH</Span>
-      <span class="flex"></span>
-      <mat-icon>person</mat-icon>
-      <span class="flexentreicons"></span>
-      <mat-icon>menu</mat-icon>
-  </mat-toolbar>
     <div class="container-form" style="text-align: center">
       <h2>Añadir Formacion Academica</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idFormacionAcademica</mat-label>
+          <input matInput placeholder="Id" formControlName="idFormacionAcademica" />
+        </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Nombre Secundaria</mat-label>
           <input matInput placeholder="Secundaria" formControlName="nombre" />
@@ -34,9 +29,9 @@
           <mat-select formControlName="university">
             <mat-option
               *ngFor="let u of listaUniversidades"
-              [value]="u.ID_Universidad"
+              [value]="u.idUniversidad"
             >
-              {{ u.ID_Universidad }}
+              {{ u.nameUniversidades }}
             </mat-option>
           </mat-select>
           <mat-error
@@ -51,9 +46,9 @@
             <mat-select formControlName="career">
               <mat-option
                 *ngFor="let c of listaCarreras"
-                [value]="c.ID_Carrera"
+                [value]="c.idCarrera"
               >
-                {{ c.ID_Carrera }}
+                {{ c.nameCarreras }}
               </mat-option>
             </mat-select>
             <mat-error
@@ -64,7 +59,7 @@
           </mat-form-field>
         <br />
         <button mat-raised-button class="aceptar-button">Aceptar</button>
-        <button mat-raised-button class="cancelar-button" routerLink="/formacionacademica">
+        <button mat-raised-button class="cancelar-button" routerLink="/carrera/nuevo">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>

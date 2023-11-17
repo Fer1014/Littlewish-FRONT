@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     request.password = this.password;
     this.loginService.login(request).subscribe((data: any) => {
       sessionStorage.setItem("token", data.jwttoken);
+
       const role = this.loginService.showRole();
       switch (role) {
         case 'ADMINISTRADOR':
@@ -39,10 +40,25 @@ export class LoginComponent implements OnInit {
       }
       this.mensaje = "INICIO DE SESION EXITOSO"
       this.snackBar.open(this.mensaje, "Aviso", { duration: 2000 });
+
+      sessionStorage.setItem("username", this.username);
+      this.obtenerUsuario(this.username);
+      this.router.navigate(['components/usuarios/listar']);
+
     }, error => {
       this.mensaje = "Credenciales incorrectas!!!"
       this.snackBar.open(this.mensaje, "Aviso", { duration: 2000 });
     });
   }
+
+   obtenerUsuario(username: string ): void {
+
+    this.loginService.obtenerUserxUsername(username).subscribe((data) => {
+      sessionStorage.setItem("idUsuario", data.id.toString());
+    });
+    this.router.navigate(['components/comentarios/listar']);
+
+  }
+
 
 }
