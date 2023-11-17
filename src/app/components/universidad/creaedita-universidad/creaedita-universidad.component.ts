@@ -18,7 +18,9 @@ export class CreaeditaUniversidadComponent implements OnInit {
   universidad: Universidad = new Universidad();
   mensaje: string = '';
   maxFechaIngreso: Date = moment().toDate();
-  maxFechaEgreso: Date = moment().add(10, 'years').toDate();
+  minFechaIngreso: Date = moment('2010-01-01').toDate();
+  maxFechaEgreso: Date = moment().add(5, 'years').toDate();
+  minFechaEgreso: Date = moment('2020-01-01').toDate();
   id: number = 0;
   edicion: boolean = false;
   constructor(
@@ -32,6 +34,7 @@ export class CreaeditaUniversidadComponent implements OnInit {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init();
+      
     });
     this.form = this.formBuilder.group({
       idUniversidad: [''],
@@ -59,7 +62,7 @@ export class CreaeditaUniversidadComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['/universidad']);
+      this.router.navigate(['carrera/nuevo']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -77,8 +80,8 @@ export class CreaeditaUniversidadComponent implements OnInit {
         this.form = new FormGroup({
           idUniversidad: new FormControl(data.idUniversidad),
           nameUniversidades: new FormControl(data.nameUniversidades),
-          FechaIngreso: new FormControl(data.fechaIngreso),
-          FechaEgreso: new FormControl(data.fechaEgreso),
+          fechaIngreso: new FormControl(data.fechaIngreso),
+          fechaEgreso: new FormControl(data.fechaEgreso),
         });
       });
     }

@@ -41,7 +41,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/components.module').then((m) => m.ComponentsModule),
   },
-  
 ];
 
 @NgModule({

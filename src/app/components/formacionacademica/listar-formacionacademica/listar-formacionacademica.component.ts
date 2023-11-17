@@ -18,6 +18,8 @@ export class ListarFormacionacademicaComponent implements OnInit {
     'secundaria',
     'universidad',
     'carrera',
+    'accion01',
+    'accion02',
   ];
   constructor(private faS: FormacionacademicaService) {}
   ngOnInit(): void {
@@ -29,5 +31,15 @@ export class ListarFormacionacademicaComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
+  }
+  eliminar(id: number) {
+    this.faS.delete(id).subscribe((data) => {
+      this.faS.list().subscribe((data) => {
+        this.faS.setList(data);
+      });
+    });
+  }
+  filter(en: any) {
+    this.dataSource.filter = en.target.value.trim();
   }
 }
