@@ -6,6 +6,7 @@
   <button mat-button [matMenuTriggerFor]="menuUniversidad">Universidad</button>
   <button mat-button [matMenuTriggerFor]="menuCarrera">Carrera</button>
   <button mat-button [matMenuTriggerFor]="menuFA">Formacion Academica</button>
+  <button mat-button [matMenuTriggerFor]="menuCV">Curriculum</button>
 </mat-toolbar>
 
 <mat-menu #menuUsuarios="matMenu">
@@ -52,6 +53,12 @@
 <mat-menu #menuFA="matMenu">
   <button mat-menu-item routerLink="/formacionacademica/nuevo">Registrar</button>
   <button mat-menu-item routerLink="/formacionacademica">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+<mat-menu #menuCV="matMenu">
+  <button mat-menu-item routerLink="/curriculum/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/curriculum">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <router-outlet></router-outlet>

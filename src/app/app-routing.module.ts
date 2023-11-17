@@ -56,6 +56,14 @@ const routes: Routes = [
       { path: 'ediciones/:id', component: CreaeditaFormacionacademicaComponent },
     ],
   },
+  {
+    path: 'curriculum',
+    component: CurriculumComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaCurriculumComponent },
+      { path: 'ediciones/:id', component: CreaeditaCurriculumComponent },
+    ],
+  },
 ];
 
 @NgModule({

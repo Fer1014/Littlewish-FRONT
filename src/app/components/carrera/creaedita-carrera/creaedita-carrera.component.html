@@ -19,7 +19,7 @@
 </mat-toolbar>
   <body>
     <div class="container-form" style="text-align: center">
-      <h2>Registro de carreras</h2>
+      <h2>Añadir Carrera Universitaria</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>idCarrera</mat-label>
@@ -27,7 +27,7 @@
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>Carrera</mat-label>
+          <mat-label>Carrera Universitaria</mat-label>
           <input
             matInput
             placeholder="Carrera"
@@ -41,7 +41,7 @@
         </mat-form-field>
         <br />
         <button mat-raised-button class="aceptar-button" color="primary">Aceptar</button>
-        <button mat-raised-button class="cancelar-button" color="warn" routerLink="/carrera">
+        <button mat-raised-button class="cancelar-button" color="warn" routerLink="/universidad/nuevo">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>

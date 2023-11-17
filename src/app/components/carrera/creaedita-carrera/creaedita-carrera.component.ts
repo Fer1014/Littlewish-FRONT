@@ -55,7 +55,7 @@ export class CreaeditaCarreraComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['carrera']);
+      this.router.navigate(['formacionacademica/nuevo']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }

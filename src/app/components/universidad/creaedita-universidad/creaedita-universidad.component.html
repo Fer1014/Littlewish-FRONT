@@ -45,6 +45,7 @@
             placeholder="Fecha de Ingreso"
             [matDatepicker]="pickerIngreso"
             formControlName="fechaIngreso"
+            [min]="minFechaIngreso"
             [max]="maxFechaIngreso"
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
@@ -66,6 +67,7 @@
               placeholder="Fecha de Egreso"
               [matDatepicker]="pickerEgreso"
               formControlName="fechaEgreso"
+              [min]="minFechaEgreso"
               [max]="maxFechaEgreso"
             />
             <mat-hint>MM/DD/YYYY</mat-hint>
