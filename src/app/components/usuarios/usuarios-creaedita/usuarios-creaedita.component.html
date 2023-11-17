@@ -19,7 +19,7 @@
         <div class="form-info">
             <div class="form-info-child">
                 <h1>Registro de nuevo usuario</h1>
-                <form [formGroup]="form" (submit)="registrar()" class="example-form">
+                <form [formGroup]="form" (submit)="aceptar()" class="example-form">
                     <div class="inputs1">
                         <mat-form-field class="example-full-width">
                             <mat-label>Usuario</mat-label>
@@ -90,15 +90,13 @@
                         </mat-form-field>
                         <br>
                         <div class="container-buttons">
-                            <button mat-button routerLink="/login" class="custom-button">Registrar</button>
-                            <button mat-button routerLink="/usuarios/listar" class="custom-button2">Cancelar</button>
+                            <button mat-button class="custom-button">Registrar</button>
+                            <button mat-button routerLink="login" class="custom-button2">Cancelar</button>
                         </div>
+                        <br>
                         <p>{{ mensaje }}</p>
                     </div>
-
                 </form>
-
-
             </div>
         </div>
     </div>

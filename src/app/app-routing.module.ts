@@ -10,7 +10,6 @@ import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuari
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
 import { TarjetaListarComponent } from './components/tarjeta/tarjeta-listar/tarjeta-listar.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { UniversidadComponent } from './components/universidad/universidad.component';
 import { CreaeditaUniversidadComponent } from './components/universidad/creaedita-universidad/creaedita-universidad.component';
 import { CarreraComponent } from './components/carrera/carrera.component';
@@ -21,20 +20,32 @@ import { PagoComponent } from './components/pago/pago.component';
 import { CrearComponent } from './components/pago/crear/crear.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
-
+import { HomeComponent } from './components/home/home.component';
 
 import { LoginComponent } from './components/login/login.component';
 
 
+
 const routes: Routes = [
   {
+    path:'',
+    component:HomeComponent,
+  },
+  /*{
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
-  },
+  },*/
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
+    children: [
+      {path: 'nuevo', component:UsuariosCreaeditaComponent}
+    ]
   },
   {
     path: 'components',

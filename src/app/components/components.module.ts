@@ -11,7 +11,6 @@ import { TipousuarioCreaeditaComponent } from './tipo-usuario/tipousuario-creaed
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { TarjetaListarComponent } from './tarjeta/tarjeta-listar/tarjeta-listar.component';
 import { TarjetaCreaeditaComponent } from './tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
-import { MenuComponent } from './menu/menu.component';
 import { UniversidadComponent } from './universidad/universidad.component';
 import { CreaeditaUniversidadComponent } from './universidad/creaedita-universidad/creaedita-universidad.component';
 import { CreaeditaCarreraComponent } from './carrera/creaedita-carrera/creaedita-carrera.component';
@@ -41,14 +40,39 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { DesarrolladorComponent } from './desarrollador/desarrollador.component';
+import { EmpresarioComponent } from './empresario/empresario.component';
+import { AdministradorComponent } from './administrador/administrador.component';
+
+import { ProfileDesarrolladorComponent } from './desarrollador/profile-desarrollador/profile-desarrollador.component';
+import { ProfileEmpresarioComponent } from './empresario/profile-empresario/profile-empresario.component';
+
+import { DashboardComponent } from './administrador/dashboard/dashboard.component';
+
+import { MatGridListModule } from '@angular/material/grid-list';
+import { HomeComponent } from './home/home.component';
+
+
+
+
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
+}
+
+=======
 import { ComentarioPuntuacionComponent } from './comentario-puntuacion/comentario-puntuacion.component';
 import { ListarComentarioComponent } from './comentario-puntuacion/listar/listar.component';
 import { AddComentarioComponent } from './comentario-puntuacion/add/add.component';
 import {MatTabsModule} from '@angular/material/tabs'
+
 
 @NgModule({
   declarations: [
@@ -61,7 +85,6 @@ import {MatTabsModule} from '@angular/material/tabs'
     TarjetaComponent,
     TarjetaListarComponent,
     TarjetaCreaeditaComponent,
-    MenuComponent,
     UniversidadComponent,
     CreaeditaUniversidadComponent,
     CreaeditaCarreraComponent,
@@ -77,10 +100,20 @@ import {MatTabsModule} from '@angular/material/tabs'
     ProyectoComponent,
     ListarProyectoComponent,
     CrearProyectoComponent,
+
+    DesarrolladorComponent,
+    EmpresarioComponent,
+    AdministradorComponent,
+    ProfileDesarrolladorComponent,
+    ProfileEmpresarioComponent,
+    DashboardComponent,
+    HomeComponent,
+
     ComentarioPuntuacionComponent,
     ListarComentarioComponent,
     AddComentarioComponent,
     
+
 
   ],
   imports: [
@@ -105,8 +138,21 @@ import {MatTabsModule} from '@angular/material/tabs'
     MatFormFieldModule,
     MatDividerModule,
     MatSidenavModule,
+
+    TranslateModule,
+    MatGridListModule,
+
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+
     MatTabsModule
     
+
   ]
 })
 export class ComponentsModule { }
