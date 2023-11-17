@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Little Wish</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="margin-left: auto;">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="toolbar-margin"></div>
+
+  <div class="card-container">
+    <div class="form-info-child">
+        <h1>Registro de puntuacion</h1>
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+            <div class="inputs1">
+                <mat-form-field class="example-full-width">
+                    <mat-label>puntuacion</mat-label>
+                    <input matInput placeholder="puntuacion" formControlName="puntuacion" type number/>
+                    <mat-error *ngIf="obtenerControlCampo('puntuacion')?.errors?.['required']">
+                        Complete el campo!
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <div class="button-container">
+                  <button mat-button class="add-button">Registrar</button>
+              </div>
+              </div>
+              <p>{{ mensaje }}</p>
+          </form>
+        </div>
+      </div>
+
+  
+</body>
+</html>

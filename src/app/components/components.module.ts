@@ -48,7 +48,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ComentarioPuntuacionComponent } from './comentario-puntuacion/comentario-puntuacion.component';
 import { ListarComentarioComponent } from './comentario-puntuacion/listar/listar.component';
 import { AddComentarioComponent } from './comentario-puntuacion/add/add.component';
-import {MatTabsModule} from '@angular/material/tabs'
+import {MatTabsModule} from '@angular/material/tabs';
+import { PuntuacionComponent } from './puntuacion/puntuacion.component';
+import { PuntuacionListarComponent } from './puntuacion/puntuacion-listar/puntuacion-listar.component';
+import { PuntuacionCreaeditaComponent } from './puntuacion/puntuacion-creaedita/puntuacion-creaedita.component'
 
 @NgModule({
   declarations: [
@@ -80,7 +83,9 @@ import {MatTabsModule} from '@angular/material/tabs'
     ComentarioPuntuacionComponent,
     ListarComentarioComponent,
     AddComentarioComponent,
-    
+    PuntuacionComponent,
+    PuntuacionListarComponent,
+    PuntuacionCreaeditaComponent,
 
   ],
   imports: [

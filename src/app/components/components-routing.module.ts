@@ -24,6 +24,9 @@ import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto
 import { ComentarioPuntuacionComponent } from './comentario-puntuacion/comentario-puntuacion.component';
 import { ListarComentarioComponent } from './comentario-puntuacion/listar/listar.component';
 import { AddComentarioComponent } from './comentario-puntuacion/add/add.component';
+import { PuntuacionComponent } from './puntuacion/puntuacion.component';
+import { PuntuacionListarComponent } from './puntuacion/puntuacion-listar/puntuacion-listar.component';
+import { PuntuacionCreaeditaComponent } from './puntuacion/puntuacion-creaedita/puntuacion-creaedita.component';
 
 
 const routes: Routes = [
@@ -96,6 +99,14 @@ const routes: Routes = [
       { path: 'add', component: AddComentarioComponent },
     ]
   },
+
+  {
+    path: 'puntuacion', component: PuntuacionComponent, children: [
+      { path: 'listar', component: PuntuacionListarComponent },
+      { path: 'add', component: PuntuacionCreaeditaComponent },
+    ]
+  },
+
 
 ];
 

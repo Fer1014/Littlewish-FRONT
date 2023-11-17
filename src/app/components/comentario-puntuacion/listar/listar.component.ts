@@ -28,7 +28,6 @@ export class ListarComentarioComponent implements OnInit{
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
     //this.cS.listbyUser(Number(sessionStorage.getItem("idUsuarioComentario")?.toString())).subscribe((data) =>{
-    
       this.comentarios = data;
       this.comentarios = this.comentarios;
       this.usuarioReceptor = sessionStorage.getItem("idUsuarioComentario")?.toString();

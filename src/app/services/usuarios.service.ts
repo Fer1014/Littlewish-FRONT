@@ -50,8 +50,6 @@ export class UsuariosService {
     });
   }
 
-
-
   update(u: Usuarios) {
     let token = sessionStorage.getItem('token');
 
