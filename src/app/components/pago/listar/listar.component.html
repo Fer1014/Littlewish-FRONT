@@ -24,37 +24,37 @@
           
             <!-- matColumnDef ->del ts  -->
             
-            <ng-container matColumnDef="codigo">
+            <ng-container matColumnDef='codigo'>
               <th mat-header-cell *matHeaderCellDef> Codigo </th>
               <!-- element. ->del models/entidad atributo que definimos  -->
               <td mat-cell *matCellDef="let element"> {{element.idPago}} </td>
             </ng-container>
           
             <!-- Name Column -->
-            <ng-container matColumnDef="monto">
+            <ng-container matColumnDef='monto'>
               <th mat-header-cell *matHeaderCellDef> Monto </th>
               <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
             </ng-container>
           
             <!-- Weight Column -->
-            <ng-container matColumnDef="fecha">
+            <ng-container matColumnDef='fecha'>
               <th mat-header-cell *matHeaderCellDef> Fecha </th>
               <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
             </ng-container>
           
             <!-- Symbol Column -->
-            <ng-container matColumnDef="tarjeta">
+            <ng-container matColumnDef='tarjeta'>
               <th mat-header-cell *matHeaderCellDef> Tarjeta </th>
-              <td mat-cell *matCellDef="let element"> {{element.tarjeta.numeroTarjeta}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.tarjeta.nombre}} </td>
             </ng-container>
 
             <br/>
 
             <!-- Symbol Column -->
 
-            <ng-container matColumnDef="proyecto">
+            <ng-container matColumnDef='proyecto'>
                 <th mat-header-cell *matHeaderCellDef> Proyecto </th>
-                <td mat-cell *matCellDef="let element"> {{element.proyecto.descripcion}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.proyectos.nombre}} </td>
               </ng-container>
   
             
@@ -63,8 +63,8 @@
           </table>
           
           <mat-paginator [length]="100"
-          [pageSize]="10"
-          [pageSizeOptions]="[5, 10, 25, 100]"
+          [pageSize]="1"
+          [pageSizeOptions]="[1, 5, 10, 15]"
           aria-label="Select page">
         </mat-paginator>
             </div>

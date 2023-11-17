@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Tarjeta } from '../models/tarjeta';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 const base_url = environment.base;
 
 @Injectable({
@@ -14,10 +14,21 @@ export class TarjetasService {
   private ListaCambio = new Subject<Tarjeta[]>();
   constructor(private http: HttpClient) {}
   list() {
-    return this.http.get<Tarjeta[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Tarjeta[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(smvoIn: Tarjeta) {
-    return this.http.post(this.url, smvoIn);
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, smvoIn ,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   setList(ListaNueva: Tarjeta[]) {
     this.ListaCambio.next(ListaNueva);

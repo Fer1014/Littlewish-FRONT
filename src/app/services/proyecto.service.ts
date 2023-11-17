@@ -1,23 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Proyecto } from '../models/proyecto';
-import { HttpClient } from '@angular/common/http';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Proyectos } from '../models/proyecto';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
 })
 export class ProyectoService {
-  private url = `${base_url}/pagos`;
-  private ListaCambio = new Subject<Proyecto[]>();
+  private url = `${base_url}/proyectos`;
+  private ListaCambio = new Subject<Proyectos[]>();
   constructor(private http: HttpClient) { }
   list() {
-    return this.http.get<Proyecto[]>(this.url);
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Proyectos[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
-  insert(p: Proyecto) {
-    return this.http.post(this.url, p);
+  insert(p: Proyectos) {
+    let token = sessionStorage.getItem('token');
+    return this.http.post(this.url, p, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
-  setList(ListaNueva: Proyecto[]) {
+  setList(ListaNueva: Proyectos[]) {
     this.ListaCambio.next(ListaNueva);
   }
   getList() {
