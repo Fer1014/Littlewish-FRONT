@@ -37,7 +37,6 @@ import { AddComentarioComponent } from './comentario-puntuacion/add/add.componen
 
 
 const routes: Routes = [
-  
   {
     canActivate: [GuardService],
     path:'administrador/:id',

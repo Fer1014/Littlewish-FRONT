@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, 
-  FormBuilder, 
-  FormGroup,
-   Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Pago } from 'src/app/models/pago';
-import { Proyectos } from 'src/app/models/proyecto';
- 
+import { Proyecto } from 'src/app/models/proyecto';
 import { Tarjeta } from 'src/app/models/tarjeta';
 import { PagoService } from 'src/app/services/pago.service';
 import { ProyectoService } from 'src/app/services/proyecto.service';
@@ -22,17 +18,17 @@ export class CrearComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   pago: Pago = new Pago();
   mensaje: string = '';
-  maxFecha: Date = moment().add(30, 'days').toDate();
+  maxFecha: Date = moment().add(-1, 'days').toDate();
   listaTarjetas:Tarjeta[]=[];
-  listaProyectos:Proyectos[]=[];
+  listaProyectos:Proyecto[]=[];
   constructor(
     //Form
     private formBuilder: FormBuilder,
     //ListaUniversidades
-    private tarjetaS:TarjetasService,
-    private proyectoS:ProyectoService,
+    private tS:TarjetasService,
+    private proS:ProyectoService,
     //Insertar 
-    private pagoS:PagoService,
+    private pS:PagoService,
     private router: Router
   ){}
 
@@ -42,14 +38,14 @@ export class CrearComponent implements OnInit{
       monto: ['',Validators.required],
       fecha:['',Validators.required],
       tarjeta:['',Validators.required],
-      proyectos:['',Validators.required],
+      proyecto:['',Validators.required],
     });
     //Lista de universidades
-    this.tarjetaS.list().subscribe(data=>{
+    this.tS.list().subscribe(data=>{
       this.listaTarjetas=data;
     });
 
-    this.proyectoS.list().subscribe(data=>{
+    this.proS.list().subscribe(data=>{
       this.listaProyectos=data;
     });
   }
@@ -58,14 +54,14 @@ export class CrearComponent implements OnInit{
       this.pago.monto=this.form.value.monto;
       this.pago.fecha=this.form.value.fecha;
       this.pago.tarjeta.idTarjeta=this.form.value.tarjeta;
-      this.pago.proyectos.idproyecto=this.form.value.proyectos;
-      this.pagoS.insert(this.pago).subscribe(()=>{
-        this.pagoS.list().subscribe(data=>{
-          this.pagoS.setList(data);
+      this.pago.proyecto.idProyecto=this.form.value.proyecto;
+      this.pS.insert(this.pago).subscribe(data=>{
+        this.pS.list().subscribe(data=>{
+          this.pS.setList(data);
         })
       });
       //Ver en el routing
-      this.router.navigate(['components/proyectos']);
+      this.router.navigate(['proyectos']);
     }else{
       this.mensaje="Complete los campos!!! >:v"
     }

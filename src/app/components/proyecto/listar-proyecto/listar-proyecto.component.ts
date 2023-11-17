@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Proyectos } from 'src/app/models/proyecto';
-
+import { Proyecto } from 'src/app/models/proyecto';
 import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
@@ -11,17 +10,10 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
   styleUrls: ['./listar-proyecto.component.css']
 })
 export class ListarProyectoComponent implements OnInit{
-  dataSource: MatTableDataSource<Proyectos> = new MatTableDataSource();
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  dataSource: MatTableDataSource<Proyecto> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['Codigo',
-  'Nombre',
-  'Descripcion',
-   'FechaInicio',
-   'FechaFin',
-   'PuestoBuscado',
-   'Usuario'];
-  
+  ['codigo','Titulo', 'Fecha Inicio','Fecha Fin'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private pS:ProyectoService){}
 
   ngOnInit(): void {

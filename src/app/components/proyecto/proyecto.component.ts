@@ -8,5 +8,4 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProyectoComponent {
   constructor(public route: ActivatedRoute) {}
-  
 }
