@@ -4,9 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { UsuariosListarComponent } from './components/usuarios/usuarios-listar/usuarios-listar.component';
-import { UsuariosCreaeditaComponent } from './components/usuarios/usuarios-creaedita/usuarios-creaedita.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { MatTableModule } from '@angular/material/table'
 import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,41 +16,38 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { TipoUsuarioComponent } from './components/tipo-usuario/tipo-usuario.component';
-import { TipousuarioListarComponent } from './components/tipo-usuario/tipousuario-listar/tipousuario-listar.component';
-import { TipousuarioCreaeditaComponent } from './components/tipo-usuario/tipousuario-creaedita/tipousuario-creaedita.component';
-import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
-import { TarjetaListarComponent } from './components/tarjeta/tarjeta-listar/tarjeta-listar.component';
-import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedita/tarjeta-creaedita.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
+//Seguridad
+import { LoginComponent } from './components/login/login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsuariosComponent,
-    UsuariosListarComponent,
-    UsuariosCreaeditaComponent,
-    TipoUsuarioComponent,
-    TipousuarioListarComponent,
-    TipousuarioCreaeditaComponent,
-    TarjetaComponent,
-    TarjetaListarComponent,
-    TarjetaCreaeditaComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
     MatTableModule,
     MatListModule,
+    ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -60,14 +56,12 @@ import { TarjetaCreaeditaComponent } from './components/tarjeta/tarjeta-creaedit
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
     MatCardModule,
     MatDialogModule,
-    HttpClientModule,
-    MatFormFieldModule,
+    MatSidenavModule,
+    MatSnackBarModule,
     MatDividerModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

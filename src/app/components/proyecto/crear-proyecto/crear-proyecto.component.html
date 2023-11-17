@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" style="text-align: center">
+        <h2>Registro de Proyecto</h2> 
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+             <!-- Curso-->
+        <mat-form-field class="example-full-width" >
+            <mat-label>Titulo</mat-label>
+        
+            <input
+             matInput placeholder="Titulo" 
+             
+             formControlName="titulo" 
+             />
+             <mat-error
+              *ngIf="obtenerControlCampo('titulo')?.errors?.['required']"
+            >
+              El TItulo es obligatorio.
+            </mat-error>
+          </mat-form-field>
+          <br/>
+
+          <mat-form-field appearance="fill" class="example-full-width">
+            
+            <input 
+            matInput 
+            placeholder="Fecha Inicio"
+            [matDatepicker]="pickerInicio" 
+            formControlName="FechaInicio"
+                
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle 
+            matIconSuffix 
+            [for]="pickerInicio"></mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-error
+            *ngIf="obtenerControlCampo('FechaInicio')?.errors?.['required']"
+          >
+            La fecha de Inicio es obligatoria.
+          </mat-error>
+          </mat-form-field>
+          
+
+          <br/>
+          
+          <!--Fecha fin-->
+
+          <mat-form-field appearance="fill" class="example-full-width">
+            
+            <input 
+            matInput 
+            placeholder="Fecha fin"
+            [matDatepicker]="pickerFin" 
+            formControlName="FechaFin"
+            [max]="MaxFecha"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix
+             [for]="pickerFin"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFin></mat-datepicker>
+
+            <mat-error
+            *ngIf="obtenerControlCampo('FechaFin')?.errors?.['required']"
+          >
+            La fecha de Fin es obligatoria.
+          </mat-error>
+          </mat-form-field>
+          
+       
+          <br/>
+          <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/pagos">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+</html>
