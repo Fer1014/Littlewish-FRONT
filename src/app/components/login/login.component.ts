@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       const role = this.loginService.showRole();
       switch (role) {
         case 'ADMINISTRADOR':
-          this.router.navigate(['components/administrador/profile-administrador']);
+          this.router.navigate(['components/administrador/dashboard']);
           break;
         case 'DESARROLLADOR':
           this.router.navigate(['components/desarrollador/profile-desarrollador']);

@@ -20,10 +20,10 @@ import { PagoComponent } from './components/pago/pago.component';
 import { CrearComponent } from './components/pago/crear/crear.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { CrearProyectoComponent } from './components/proyecto/crear-proyecto/crear-proyecto.component';
-
+import { HomeComponent } from './components/home/home.component';
 
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
+
 
 
 const routes: Routes = [

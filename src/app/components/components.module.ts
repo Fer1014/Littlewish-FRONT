@@ -49,10 +49,18 @@ import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { DesarrolladorComponent } from './desarrollador/desarrollador.component';
 import { EmpresarioComponent } from './empresario/empresario.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { ProfileAdministradorComponent } from './administrador/profile-administrador/profile-administrador.component';
+
 import { ProfileDesarrolladorComponent } from './desarrollador/profile-desarrollador/profile-desarrollador.component';
 import { ProfileEmpresarioComponent } from './empresario/profile-empresario/profile-empresario.component';
+
+import { DashboardComponent } from './administrador/dashboard/dashboard.component';
+
+import { MatGridListModule } from '@angular/material/grid-list';
 import { HomeComponent } from './home/home.component';
+
+
+
+
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -88,9 +96,9 @@ export function HttpLoaderFactory(http: HttpClient){
     DesarrolladorComponent,
     EmpresarioComponent,
     AdministradorComponent,
-    ProfileAdministradorComponent,
     ProfileDesarrolladorComponent,
     ProfileEmpresarioComponent,
+    DashboardComponent,
     HomeComponent,
   ],
   imports: [
@@ -116,6 +124,7 @@ export function HttpLoaderFactory(http: HttpClient){
     MatDividerModule,
     MatSidenavModule,
     TranslateModule,
+    MatGridListModule,
 
     TranslateModule.forRoot({
       loader:{

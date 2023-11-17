@@ -24,10 +24,10 @@ import { AdministradorComponent } from './administrador/administrador.component'
 import { EmpresarioComponent } from './empresario/empresario.component';
 import { DesarrolladorComponent } from './desarrollador/desarrollador.component';
 import { GuardService } from '../services/guard.service';
-import { ProfileAdministradorComponent } from './administrador/profile-administrador/profile-administrador.component';
 import { ProfileEmpresarioComponent } from './empresario/profile-empresario/profile-empresario.component';
 import { ProfileDesarrolladorComponent } from './desarrollador/profile-desarrollador/profile-desarrollador.component';
-
+import { DashboardComponent } from './administrador/dashboard/dashboard.component';
+import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
 
 const routes: Routes = [
   {
@@ -36,8 +36,17 @@ const routes: Routes = [
     component: AdministradorComponent,
     children: [
       {
-        path:'profile',
-        component: ProfileAdministradorComponent,
+        path:'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path:'usuarios',
+        component: UsuariosComponent,
+        children:[
+          {path: 'nuevo', component: UsuariosCreaeditaComponent},
+          {path: 'listar', component: UsuariosListarComponent},
+          {path: 'ediciones/:id', component: UsuariosCreaeditaComponent}
+        ]
       },
       {
         path: 'tipousuario', component: TipoUsuarioComponent, children: [
@@ -50,7 +59,21 @@ const routes: Routes = [
         path:'tarjeta', component:TarjetaComponent, children: [
           { path:'listar', component: TarjetaListarComponent }
         ]
-      }
+      },
+      {
+        path: 'proyectos', component: ProyectoComponent, children: [
+          { path: 'listar', component: ListarProyectoComponent},
+          { path: 'nuevo', component: CrearProyectoComponent },
+          { path: 'ediciones/:id', component:CrearProyectoComponent}
+        ]
+      },
+      {
+        path: 'tarjetas', component: TarjetaComponent, children: [
+          {path: 'listar', component: TarjetaListarComponent},
+          {path: 'nuevo', component: TarjetaCreaeditaComponent},
+          {path: 'ediciones/:id',component: TarjetaCreaeditaComponent}
+        ]
+      },
     ]
   },
   {
