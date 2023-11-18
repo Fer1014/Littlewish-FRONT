@@ -13,21 +13,24 @@ import { Puntuacion } from 'src/app/models/puntuacion';
 export class PuntuacionListarComponent  implements OnInit{
 
   puntuaciones: Puntuacion[] = [];
+  usuarioReceptorP = Number(sessionStorage.getItem("idUsuarioPuntuacion")?.toString());
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private router: Router, private pS: PuntuacionService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.pS.list().subscribe((data) => {
+   // this.pS.list().subscribe((data) => {
+    this.pS.listbyUser(this.usuarioReceptorP).subscribe((data) =>{
       this.puntuaciones = data;
       this.puntuaciones = this.puntuaciones;
+      //this.usuarioReceptorP = sessionStorage.getItem("idUsuarioPuntuacion")?.toString();
     });
 
-    this.pS.getList().subscribe((data) => {
+   /* this.pS.getList().subscribe((data) => {
       this.puntuaciones = data;
       this.puntuaciones = this.puntuaciones;
-  });
+  });*/
   }
 
   navigateToPuntuacion() {

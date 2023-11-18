@@ -11,7 +11,7 @@ const base_url = environment.base;
 })
 export class CommentService {
 
-  private url = `${base_url}/comentario `;
+  private url = `${base_url}/comentario`;
   private listaCambio = new Subject<Comentario[]>();
   constructor(private http: HttpClient) {}
 
@@ -31,12 +31,13 @@ export class CommentService {
 
   listbyUser(id: number) {
     let token = sessionStorage.getItem('token');
-
+    //`${this.url}/${id}`
     return this.http.get<Comentario[]>(`${this.url}/${id}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
+    
   }
 
 

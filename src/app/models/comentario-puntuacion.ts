@@ -5,5 +5,5 @@ export class Comentario{
   comentario:string= ""
   users:Usuarios=new Usuarios()
   usersR:Usuarios=new Usuarios()
-  
+  puntuacion:number=0
 }

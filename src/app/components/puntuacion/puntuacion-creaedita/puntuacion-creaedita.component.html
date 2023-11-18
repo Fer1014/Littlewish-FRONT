@@ -26,7 +26,7 @@
             <div class="inputs1">
                 <mat-form-field class="example-full-width">
                     <mat-label>puntuacion</mat-label>
-                    <input matInput placeholder="puntuacion" formControlName="puntuacion" type number/>
+                    <input matInput placeholder="puntuacion" formControlName="puntuacion" type="number"/>
                     <mat-error *ngIf="obtenerControlCampo('puntuacion')?.errors?.['required']">
                         Complete el campo!
                     </mat-error>

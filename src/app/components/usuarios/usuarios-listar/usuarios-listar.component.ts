@@ -25,7 +25,8 @@ export class UsuariosListarComponent {
     'empresa',
     'estado',
     'actualizar',
-    'comentario'
+    'comentario',
+    'puntuacion'
   ];
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
@@ -48,6 +49,9 @@ export class UsuariosListarComponent {
   comentario(id: number) {
     this.uS.comentario(id);
   }
-  
+
+  puntuacion(id: number) {
+    this.uS.puntuacion(id);
+  }
 
 }

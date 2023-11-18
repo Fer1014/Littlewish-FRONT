@@ -10,6 +10,7 @@ import { ComentarioPuntuacionComponent } from '../comentario-puntuacion.componen
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { MatTable } from '@angular/material/table';
+import { Usuarios } from 'src/app/models/usuarios';
 @Component({
   selector: 'app-listar-comentariopuntuacion',
   templateUrl: './listar.component.html',
@@ -18,31 +19,42 @@ import { MatTable } from '@angular/material/table';
 })
 export class ListarComentarioComponent implements OnInit{
 
-  comentarios: Comentario[] = [];
-  usuarioReceptor: string | undefined;
+  //comentarios: Comentario[] = [];
+  usuarioReceptor = Number(sessionStorage.getItem("idUsuarioComentario")?.toString());
 
+  usuarioPerfil: Usuarios = new Usuarios();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  //obs: Observable<any>;
 
-
+  obs: Observable<any> | undefined;
+  dataSource: MatTableDataSource<Comentario> = new MatTableDataSource<Comentario>();
+  
+  
+  constructor(private cS: CommentService, private breakpointObserver: BreakpointObserver, private router: Router, private changeDetectorRef: ChangeDetectorRef) { }
   ngOnInit(): void {
-    this.cS.list().subscribe((data) => {
-    //this.cS.listbyUser(Number(sessionStorage.getItem("idUsuarioComentario")?.toString())).subscribe((data) =>{
-      this.comentarios = data;
-      this.comentarios = this.comentarios;
-      this.usuarioReceptor = sessionStorage.getItem("idUsuarioComentario")?.toString();
+    this.cS.listbyUser(this.usuarioReceptor).subscribe((data) =>{
+      this.changeDetectorRef.detectChanges();
+      this.dataSource = new MatTableDataSource<Comentario>(data);
+      this.dataSource.paginator = this.paginator;
+      this.obs = this.dataSource.connect();
+      //console.log("data of coments" + data);
+      
+      //this.dataSource.paginator = this.paginator;
+      //this.comentarios = data;
+      //this.comentarios = this.comentarios;
+
+      //this.usuarioReceptor = sessionStorage.getItem("idUsuarioComentario")?.toString();
       console.log("idUsuarioReceptor: " + this.usuarioReceptor)
 
     });
-    this.cS.getList().subscribe((data) => {
+    /*this.cS.getList().subscribe((data) => {
        this.comentarios = data;
        this.comentarios = this.comentarios;
 
-   });
+   });*/
 
   }
-
-  constructor(private cS: CommentService, private breakpointObserver: BreakpointObserver, private router: Router) { }
 
   // Función para navegar al componente ComentarioPuntuacionComponent
   navigateToComentarioPuntuacion() {

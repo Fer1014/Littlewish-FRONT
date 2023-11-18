@@ -77,4 +77,11 @@ export class UsuariosService {
     this.router.navigate(['components/comentarios/listar']);
   }
 
+  puntuacion(id: number) {
+    let token = sessionStorage.getItem('token');
+    sessionStorage.setItem("idUsuarioPuntuacion", id.toString());
+    this.router.navigate(['components/puntuacion/listar']);
+  }
+
+
 }

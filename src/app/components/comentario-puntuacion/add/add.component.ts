@@ -37,6 +37,7 @@ export class AddComentarioComponent implements OnInit{
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       comentario : ['', Validators.required],
+      puntuacion : ['', Validators.required],
       users: ['', Validators.required]
       });
       };
@@ -45,6 +46,7 @@ aceptar(): void {
   
     console.log(this.form.value)
     this.comentario.comentario = this.form.value.comentario;
+    this.comentario.puntuacion = this.form.value.puntuacion;
     //this.comentario.users.name = "Patrick";
     //sessionStorage.getItem("idUsuario");
     console.log(sessionStorage.getItem("idUsuario"));
@@ -53,15 +55,15 @@ aceptar(): void {
 
     this.comentario.usersR.id = Number(sessionStorage.getItem("idUsuarioComentario"));
 
-    console.log('Comentario:', this.comentario);
+    console.log('Insertando Comentario:', this.comentario);
     this.cS.insert(this.comentario).subscribe((data) => {
       console.log('Respuesta del servicio:', data);
       this.cS.list().subscribe((data) => {
         this.cS.setList(data);
+        alert("Se registro un comentario exitosamente");
+        this.router.navigate(['components/comentarios/listar']);
       });
     });
-    this.router.navigate(['components/comentarios/listar']);
-
   }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);

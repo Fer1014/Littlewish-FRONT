@@ -4,7 +4,7 @@ body {
   padding: 0;
   font-family: "Kiwi Maru", sans-serif;
   display: flex;
-      justify-content: center;
+  justify-content: center;
       height: 100vh;
       margin: 0;
 }
@@ -96,6 +96,31 @@ mat-toolbar {
   margin-right: 2%; /* Añade el mismo margen derecho que la tarjeta de puntuación */
 }
 
-.inputs1 {
+/*.inputs1 {
   margin-right: 5%; 
+}*/
+
+.body{
+  width: 70%;
+}
+
+.card-containe{
+  width: 100%;  
+}
+
+input{
+  height: 500px;
+}
+.example-form{
+  min-width: 500px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.inputs1{
+  width: 100%;
+}
+
+.example-full-width{
+  width: 100%;
 }

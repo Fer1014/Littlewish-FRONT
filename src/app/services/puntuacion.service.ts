@@ -10,7 +10,7 @@ const base_url = environment.base;
 })
 export class PuntuacionService {
 
-  private url = `${base_url}/puntuacion `;
+  private url = `${base_url}/puntuacion`;
   private listaCambio = new Subject<Puntuacion[]>();
   
   constructor(private http: HttpClient) {}
@@ -41,6 +41,16 @@ export class PuntuacionService {
     let token = sessionStorage.getItem('token');
 
     return this.http.post(this.url, p, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+  listbyUser(id: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Puntuacion[]>(`${this.url}/${id}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

@@ -85,7 +85,6 @@ const routes: Routes = [
     path: 'pagos', component: PagoComponent, children: [
       { path: 'nuevo', component: CrearComponent },
       
-      
     ]
   },
   {

@@ -41,12 +41,12 @@ export class PuntuacionCreaeditaComponent implements OnInit{
         aceptar(): void {
     
           console.log(this.form.value)
-          this.puntuacion.puntos = this.form.value.puntos;
-
+          this.puntuacion.puntos = parseInt(this.form.value.puntuacion);
           console.log(sessionStorage.getItem("idUsuario"));
       
           this.puntuacion.users.id = Number(sessionStorage.getItem("idUsuario"));
-          //this.puntuacion.usersR.id = Number(sessionStorage.getItem("idUsuarioPuntuacion"));
+          this.puntuacion.usersR.id = Number(sessionStorage.getItem("idUsuarioPuntuacion"));
+          
           console.log('Puntuacion:', this.puntuacion);
           this.pS.insert(this.puntuacion).subscribe((data) => {
             console.log('Respuesta del servicio:', data);
