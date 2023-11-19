@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Pago } from 'src/app/models/pago';
-import { Proyecto } from 'src/app/models/proyecto';
+import { Proyectos } from 'src/app/models/proyecto';
 import { Tarjeta } from 'src/app/models/tarjeta';
 import { PagoService } from 'src/app/services/pago.service';
 import { ProyectoService } from 'src/app/services/proyecto.service';
@@ -20,7 +20,7 @@ export class CrearComponent implements OnInit{
   mensaje: string = '';
   maxFecha: Date = moment().add(-1, 'days').toDate();
   listaTarjetas:Tarjeta[]=[];
-  listaProyectos:Proyecto[]=[];
+  listaProyectos:Proyectos[]=[];
   constructor(
     //Form
     private formBuilder: FormBuilder,
@@ -54,7 +54,7 @@ export class CrearComponent implements OnInit{
       this.pago.monto=this.form.value.monto;
       this.pago.fecha=this.form.value.fecha;
       this.pago.tarjeta.idTarjeta=this.form.value.tarjeta;
-      this.pago.proyecto.idProyecto=this.form.value.proyecto;
+      this.pago.proyectos.idproyecto=this.form.value.proyecto;
       this.pS.insert(this.pago).subscribe(data=>{
         this.pS.list().subscribe(data=>{
           this.pS.setList(data);

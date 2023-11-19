@@ -62,18 +62,18 @@
                     {{ element.cvv }}
                 </td>
             </ng-container>
-            <ng-container matColumnDef="estado">
+            <ng-container matColumnDef="accion01">
                 <th mat-header-cell *matHeaderCellDef>Editar</th>
                 <td mat-cell *matCellDef="let element">
-                  <button mat-raised-button color="warn" [routerLink]="['/tarjeta/edicion', element.id]">
+                  <button mat-raised-button color="warn" [routerLink]="['/tarjeta/edicion', element.idTarjeta]">
                     Actualizar
                   </button>
                 </td>
               </ng-container>
-              <ng-container matColumnDef="actualizar">
-                <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+              <ng-container matColumnDef="accion02">
+                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
                 <td mat-cell *matCellDef="let element">
-                  <button mat-raised-button color="accent" (click)="eliminar(element.id)">
+                  <button mat-raised-button color="accent" (click)="eliminar(element.idTarjeta)">
                     Eliminar
                   </button>
                 </td>

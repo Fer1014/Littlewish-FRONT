@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Tarjeta } from '../models/tarjeta';
 import { environment } from 'src/environments/environment';
-import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 const base_url = environment.base;
 
 @Injectable({
@@ -10,14 +10,27 @@ const base_url = environment.base;
 })
 export class TarjetasService {
 
-  private url = `${base_url}/usuarios`;
+  private url = `${base_url}/tarjetas`;
   private ListaCambio = new Subject<Tarjeta[]>();
   constructor(private http: HttpClient) {}
   list() {
-    return this.http.get<Tarjeta[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Tarjeta[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
-  insert(smvoIn: Tarjeta) {
-    return this.http.post(this.url, smvoIn);
+
+  insert(uni: Tarjeta) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, uni, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   setList(ListaNueva: Tarjeta[]) {
     this.ListaCambio.next(ListaNueva);
@@ -25,16 +38,48 @@ export class TarjetasService {
   getList() {
     return this.ListaCambio.asObservable();
   }
-  listarId(id: number) {
-    return this.http.get<Tarjeta>(`${this.url}/${id}`);
+  
+  listId(id: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Tarjeta>(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
-  eliminar(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
-  }
-  modificar(de: Tarjeta) {
-    return this.http.put(this.url, de);
-  }
+  
+  
   update(u: Tarjeta) {
-    return this.http.put(this.url, u);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.put(this.url, u, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+  delete(id: number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+  buscar(fecha: string): Observable<Tarjeta[]> {
+    let token = sessionStorage.getItem('token');
+    return this.http.post<Tarjeta[]>(
+      `${this.url}/buscar`,
+      { fecha: fecha },
+      {
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      }
+    );
   }
 }

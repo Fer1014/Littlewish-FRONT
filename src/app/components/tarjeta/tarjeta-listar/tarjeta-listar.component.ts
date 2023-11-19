@@ -13,7 +13,8 @@ export class TarjetaListarComponent {
   
   dataSource: MatTableDataSource<Tarjeta> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['codigo','numerotarjeta', 'fechaexp','nombre','apellido','cvv','estado','actualizar'];
+  ['codigo','numerotarjeta', 'fechaexp','nombre','apellido','cvv','accion01',
+  'accion02',];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private uS: TarjetasService) {}
   ngOnInit(): void {
@@ -24,16 +25,19 @@ export class TarjetaListarComponent {
     this.uS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-
-    }); 
+    });
+  }
+  eliminar(id: number) {
+    this.uS.delete(id).subscribe((data) => {
+      this.uS.list().subscribe((data) => {
+        this.uS.setList(data);
+      });
+    });
+  }
+  filter(en: any) {
+    this.dataSource.filter = en.target.value.trim();
   }
 
-  eliminar(id: number){
-    this.uS.eliminar(id).subscribe(() => {
-      this.uS.list().subscribe(data => {
-        this.uS.setList(data);
-      });
-    });
-  }
+ 
 
 }
