@@ -11,14 +11,21 @@ import { PagoService } from 'src/app/services/pago.service';
 })
 export class ListarComponent implements OnInit{
   dataSource: MatTableDataSource<Pago> = new MatTableDataSource();
-  displayedColumns: string[] =
-  ['codigo','monto', 'fecha','tarjeta','proyecto'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  displayedColumns: string[] = [
+    'Codigo',
+    'Monto',
+    'Fecha',
+    'Tarjeta',
+    'Proyecto',
+  ];
+  
   constructor(private pS:PagoService){}
 
   ngOnInit(): void {
-    this.pS.list().subscribe(data=>{
-      this.dataSource=new MatTableDataSource(data);
+    this.pS.list().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
     this.pS.getList().subscribe((data) => {

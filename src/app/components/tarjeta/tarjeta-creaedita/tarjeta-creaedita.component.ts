@@ -75,7 +75,7 @@ export class TarjetaCreaeditaComponent {
   }
   init() {
     if (this.edicion) {
-      this.uS.listarId(this.id).subscribe((data) => {
+      this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           idTarjeta: new FormControl(data.idTarjeta),
           numeroTarjeta: new FormControl(data.numeroTarjeta),

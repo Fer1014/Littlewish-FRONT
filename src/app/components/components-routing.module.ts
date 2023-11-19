@@ -64,7 +64,7 @@ const routes: Routes = [
         path: 'proyectos', component: ProyectoComponent, children: [
           { path: 'listar', component: ListarProyectoComponent},
           { path: 'nuevo', component: CrearProyectoComponent },
-          { path: 'ediciones/:id', component:CrearProyectoComponent}
+          { path: 'ediciones/:id', component: CrearProyectoComponent}
         ]
       },
       {
